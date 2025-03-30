@@ -171,19 +171,18 @@ return {
 				})
 			end,
 
-			-- Python setup using Pyright language server
 			["pyright"] = function()
 				lspconfig["pyright"].setup({
-					cmd = { "pyright-langserver", "--stdio" }, -- command to run Pyright, uses stdio mode
-					capabilities = capabilities, -- shared capabilities (autocompletion, hover, etc.)
+					cmd = { "pyright-langserver", "--stdio" },
+					capabilities = capabilities,
 					settings = {
 						python = {
 							analysis = {
-								typeCheckingMode = "basic", -- set type checking level: "off", "basic", or "strict"
-								diagnosticMode = "workspace", -- set diagnostic mode (workspace or openFiles)
-								useLibraryCodeForTypes = true, -- enable type inference from third-party libraries
+								typeCheckingMode = "basic",
+								diagnosticMode = "workspace",
+								useLibraryCodeForTypes = true,
 							},
-							pythonPath = "/path/to/python", -- specify which Python interpreter to use (optional)
+							pythonPath = "/path/to/python",
 						},
 					},
 				})
@@ -197,7 +196,7 @@ return {
 					settings = {
 						java = {
 							signatureHelp = { enabled = true },
-							contentProvider = { preferred = "fernflower" }, -- Decompiler
+							contentProvider = { preferred = "fernflower" },
 							format = {
 								enabled = true,
 								insertSpaces = true,
@@ -211,7 +210,7 @@ return {
 				})
 			end,
 
-			["golsp"] = function()
+			["gopls"] = function()
 				lspconfig["gopls"].setup({
 					capabilities = capabilities,
 					cmd = { "gopls" },
@@ -222,8 +221,8 @@ return {
 								preferredFixes = { "quickfix", "refactor" },
 							},
 							completion = {
-								detailed = true, -- Show detailed completion suggestions
-								trigger = "Space", -- Trigger autocompletion on space key
+								detailed = true,
+								trigger = "Space",
 							},
 							usePlaceholders = true,
 							completeUnimported = true,
@@ -233,12 +232,60 @@ return {
 								unkeyedstruct = true,
 							},
 							staticcheck = true,
-							gofumpt = true, -- Enforce gofumpt formatting
+							gofumpt = true,
 						},
 					},
 				})
 			end,
-			-- EOF --
+
+			["cssls"] = function()
+				lspconfig["cssls"].setup({
+					capabilities = capabilities,
+				})
+			end,
+
+			["tailwindcss"] = function()
+				lspconfig["tailwindcss"].setup({
+					capabilities = capabilities,
+				})
+			end,
+
+			["ts_ls"] = function()
+				lspconfig["ts_ls"].setup({
+					capabilities = capabilities,
+					single_file_support = false,
+					settings = {
+						typescript = {
+							inlayHints = {
+								includeInlayParameterNameHints = "literal",
+								includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+								includeInlayFunctionParameterTypeHints = true,
+								includeInlayVariableTypeHints = false,
+								includeInlayPropertyDeclarationTypeHints = true,
+								includeInlayFunctionLikeReturnTypeHints = true,
+								includeInlayEnumMemberValueHints = true,
+							},
+						},
+						javascript = {
+							inlayHints = {
+								includeInlayParameterNameHints = "all",
+								includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+								includeInlayFunctionParameterTypeHints = true,
+								includeInlayVariableTypeHints = true,
+								includeInlayPropertyDeclarationTypeHints = true,
+								includeInlayFunctionLikeReturnTypeHints = true,
+								includeInlayEnumMemberValueHints = true,
+							},
+						},
+					},
+				})
+			end,
+
+			["html"] = function()
+				lspconfig["html"].setup({
+					capabilities = capabilities,
+				})
+			end,
 		})
 	end,
 }

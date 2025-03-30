@@ -34,7 +34,7 @@ return {
 				-- My C familia --
 				"clangd",
 				-- Web familia --
-				"tsserver",
+				"ts_ls",
 				"html",
 				"cssls",
 				"tailwindcss",
